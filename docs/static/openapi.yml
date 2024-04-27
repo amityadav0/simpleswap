@@ -78630,9 +78630,77 @@ definitions:
     description: |-
       Version defines the versioning scheme used to negotiate the IBC verison in
       the connection handshake.
+  simpleswap.simpleswap.MsgAddLiquidityResponse:
+    type: object
+    properties:
+      pool_id:
+        type: string
+  simpleswap.simpleswap.MsgCreatePoolResponse:
+    type: object
+    properties:
+      pool_id:
+        type: string
+  simpleswap.simpleswap.MsgSwapResponse:
+    type: object
+    properties:
+      pool_id:
+        type: string
+      tokenIn:
+        type: object
+        properties:
+          denom:
+            type: string
+          amount:
+            type: string
+        description: |-
+          Coin defines a token with a denomination and an amount.
+
+          NOTE: The amount field is an Int which implements the custom method
+          signatures required by gogoproto.
+  simpleswap.simpleswap.MsgWithdrawResponse:
+    type: object
+    properties:
+      share:
+        type: object
+        properties:
+          denom:
+            type: string
+          amount:
+            type: string
+        description: |-
+          Coin defines a token with a denomination and an amount.
+
+          NOTE: The amount field is an Int which implements the custom method
+          signatures required by gogoproto.
   simpleswap.simpleswap.Params:
     type: object
     description: Params defines the parameters for the module.
+  simpleswap.simpleswap.PoolAsset:
+    type: object
+    properties:
+      token:
+        type: object
+        properties:
+          denom:
+            type: string
+          amount:
+            type: string
+        description: |-
+          Coin defines a token with a denomination and an amount.
+
+          NOTE: The amount field is an Int which implements the custom method
+          signatures required by gogoproto.
+      decimal:
+        type: string
+  simpleswap.simpleswap.PoolParams:
+    type: object
+    properties:
+      swapFee:
+        type: string
+        description: swapFee is ranged from 0 to 10000.
+      amp:
+        type: string
+        description: Amplifier parameters for stable pool.
   simpleswap.simpleswap.QueryParamsResponse:
     type: object
     properties:

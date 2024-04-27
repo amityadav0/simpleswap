@@ -1,0 +1,19 @@
+syntax = "proto3";
+package simpleswap.simpleswap;
+
+option go_package = "simpleswap/x/simpleswap/types";
+
+import "cosmos/base/v1beta1/coin.proto";
+import "gogoproto/gogo.proto";
+import "simpleswap/simpleswap/tx.proto";
+
+message PoolData {
+  
+  string poolId = 1; 
+  PoolParams poolParams = 3 [(gogoproto.nullable) = false]; 
+  map<string, PoolAsset> assets = 4  [(gogoproto.nullable) = false]; 
+  cosmos.base.v1beta1.Coin total_shares = 5 [
+    (gogoproto.moretags) = "yaml:\"total_shares\"",
+    (gogoproto.nullable) = false
+  ];
+}
