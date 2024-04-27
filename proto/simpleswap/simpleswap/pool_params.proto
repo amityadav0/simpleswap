@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package simpleswap.simpleswap;
+
+option go_package = "simpleswap/x/simpleswap/types";
+
+import "cosmos/base/v1beta1/coin.proto";
+import "gogoproto/gogo.proto";
+
+message PoolParams {
+    // swapFee is ranged from 0 to 10000.
+    string swapFee = 1 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = false];
+    // Amplifier parameters for stable pool. 
+    string amp = 2 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int"];
+}

@@ -3,15 +3,33 @@ package keeper
 import (
 	"context"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
 	"simpleswap/x/simpleswap/types"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
 func (k msgServer) CreatePool(goCtx context.Context, msg *types.MsgCreatePool) (*types.MsgCreatePoolResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
+	if err := msg.ValidateBasic(); err != nil {
+		return nil, err
+	}
 
-	// TODO: Handling the message
-	_ = ctx
+	// Initialize pool
+	pooID, err := k.initializePool(ctx, msg)
+	if err != nil {
+		return nil, err
+	}
 
-	return &types.MsgCreatePoolResponse{}, nil
+	// Emit events
+	k.EmitEvent(
+		ctx, types.EventValueActionCreatePool, *pooID,
+		msg.Creator,
+		sdk.Attribute{
+			Key:   types.AttributeKeyPoolCreator,
+			Value: msg.Creator,
+		},
+	)
+	return &types.MsgCreatePoolResponse{
+		PoolId: *pooID,
+	}, nil
 }

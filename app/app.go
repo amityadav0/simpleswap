@@ -12,6 +12,7 @@ import (
 	dbm "github.com/cometbft/cometbft-db"
 	abci "github.com/cometbft/cometbft/abci/types"
 	"github.com/cometbft/cometbft/libs/log"
+
 	tmos "github.com/cometbft/cometbft/libs/os"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
@@ -113,6 +114,7 @@ import (
 	simpleswapmodule "simpleswap/x/simpleswap"
 	simpleswapmodulekeeper "simpleswap/x/simpleswap/keeper"
 	simpleswapmoduletypes "simpleswap/x/simpleswap/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	appparams "simpleswap/app/params"
@@ -524,6 +526,7 @@ func New(
 		keys[simpleswapmoduletypes.StoreKey],
 		keys[simpleswapmoduletypes.MemStoreKey],
 		app.GetSubspace(simpleswapmoduletypes.ModuleName),
+		app.BankKeeper,
 	)
 	simpleswapModule := simpleswapmodule.NewAppModule(appCodec, app.SimpleswapKeeper, app.AccountKeeper, app.BankKeeper)
 

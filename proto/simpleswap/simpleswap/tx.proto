@@ -6,6 +6,8 @@ option go_package = "simpleswap/x/simpleswap/types";
 
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
+import "simpleswap/simpleswap/pool_asset.proto";
+import "simpleswap/simpleswap/pool_params.proto";
 
 // Msg defines the Msg service.
 service Msg {
@@ -13,20 +15,6 @@ service Msg {
   rpc AddLiquidity (MsgAddLiquidity) returns (MsgAddLiquidityResponse);
   rpc Withdraw     (MsgWithdraw    ) returns (MsgWithdrawResponse    );
   rpc Swap         (MsgSwap        ) returns (MsgSwapResponse        );
-}
-
-message PoolParams {
-  
-  // swapFee is ranged from 0 to 10000.
-  string swapFee = 1 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (gogoproto.nullable) = false];
-  
-  // Amplifier parameters for stable pool. 
-  string amp = 2 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int"];
-}
-
-message PoolAsset {
-  cosmos.base.v1beta1.Coin token   = 1 [(gogoproto.nullable)   = false                                   ] ;
-  string                   decimal = 2 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int", (gogoproto.nullable) = false];
 }
 
 message MsgCreatePool {
@@ -64,7 +52,10 @@ message MsgSwap {
   string creator  = 1;
   string poolId   = 2;
   cosmos.base.v1beta1.Coin tokenIn  = 3 [(gogoproto.nullable) = false];
-  string slippage = 4 [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int", (gogoproto.nullable) = false];                                ] ;
+  string slippage = 4 
+  [(gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Int",
+  (gogoproto.nullable) = false
+  ];
 }
 
 message MsgSwapResponse {

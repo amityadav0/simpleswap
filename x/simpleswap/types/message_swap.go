@@ -9,12 +9,11 @@ const TypeMsgSwap = "swap"
 
 var _ sdk.Msg = &MsgSwap{}
 
-func NewMsgSwap(creator string, poolId string, tokenIn string, tokenOut string) *MsgSwap {
+func NewMsgSwap(creator string, poolId string, tokenIn sdk.Coin) *MsgSwap {
 	return &MsgSwap{
-		Creator:  creator,
-		PoolId:   poolId,
-		TokenIn:  tokenIn,
-		TokenOut: tokenOut,
+		Creator: creator,
+		PoolId:  poolId,
+		TokenIn: tokenIn,
 	}
 }
 
