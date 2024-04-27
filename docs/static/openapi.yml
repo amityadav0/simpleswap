@@ -78633,30 +78633,18 @@ definitions:
   simpleswap.simpleswap.MsgAddLiquidityResponse:
     type: object
     properties:
-      pool_id:
+      poolId:
         type: string
   simpleswap.simpleswap.MsgCreatePoolResponse:
     type: object
     properties:
-      pool_id:
+      poolId:
         type: string
   simpleswap.simpleswap.MsgSwapResponse:
     type: object
     properties:
-      pool_id:
+      poolId:
         type: string
-      tokenIn:
-        type: object
-        properties:
-          denom:
-            type: string
-          amount:
-            type: string
-        description: |-
-          Coin defines a token with a denomination and an amount.
-
-          NOTE: The amount field is an Int which implements the custom method
-          signatures required by gogoproto.
   simpleswap.simpleswap.MsgWithdrawResponse:
     type: object
     properties:
