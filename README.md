@@ -13,6 +13,20 @@ ignite chain serve
 
 Your blockchain in development can be configured with `config.yml`. To learn more, see the [Ignite CLI docs](https://docs.ignite.com).
 
+### Interacting with simpleswap module
+
+#### Create Pool (whitlelist)
+    - simpleswapd  tx simpleswap create-pool "1000eth,1000weth" "6,6" 100 --from alice
+    - Note: Can only be done by owner
+
+### Add liquidity
+    - simpleswapd  tx simpleswap add-liquidity poole546c64ea2770e4bf76808611963b12673ed7af8d2a1194ce584ae9a5c987255 "1000eth,1000weth" --from alice
+    - Note: pool_id can be queried using simpleswapd query 
+    - By default pool id for weth and eth will be
+
+## Swap
+    - 
+
 ### Web Frontend
 
 Ignite CLI has scaffolded a Vue.js-based web app in the `vue` directory. Run the following commands to install dependencies and start the app:

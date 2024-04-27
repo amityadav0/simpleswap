@@ -53,6 +53,8 @@ func (msg *MsgCreatePool) ValidateBasic() error {
 }
 
 func (msg *MsgCreatePool) CreatePool() PoolData {
+	// TODO: Create pool whitelist only allowed to owner.
+
 	// Extract denom list from Liquidity
 	denoms := msg.GetAssetDenoms()
 

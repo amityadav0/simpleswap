@@ -38,7 +38,7 @@ func CmdCreatePool() *cobra.Command {
 				return err
 			}
 
-			swapFee, err := strconv.Atoi(args[3])
+			swapFee, err := strconv.Atoi(args[2])
 			if err != nil {
 				return err
 			}
@@ -59,7 +59,7 @@ func CmdCreatePool() *cobra.Command {
 				})
 			}
 
-			amp := math.NewInt(0)
+			amp := math.NewInt(10)
 			msg := types.NewMsgCreatePool(
 				clientCtx.GetFromAddress().String(),
 				types.PoolParams{
