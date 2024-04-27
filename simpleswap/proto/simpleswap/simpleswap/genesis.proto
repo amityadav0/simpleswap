@@ -1,0 +1,12 @@
+syntax = "proto3";
+package simpleswap.simpleswap;
+
+import "gogoproto/gogo.proto";
+import "simpleswap/simpleswap/params.proto";
+
+option go_package = "simpleswap/x/simpleswap/types";
+
+// GenesisState defines the simpleswap module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}
