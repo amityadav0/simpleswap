@@ -1,5 +1,26 @@
 package types
 
+import (
+	fmt "fmt"
+
+	sdk "github.com/cosmos/cosmos-sdk/types"
+)
+
+func GetEventAttrOfAsset(assets []sdk.Coin) []sdk.Attribute {
+	attr := []sdk.Attribute{}
+	for index, asset := range assets {
+		attr = append(attr, sdk.NewAttribute(
+			fmt.Sprintf("%d", index),
+			asset.String(),
+		))
+	}
+	return attr
+}
+
+func GetLiquidityAsCoins(tokens []sdk.Coin) sdk.Coins {
+	return sdk.NewCoins(tokens...).Sort()
+}
+
 const (
 	EventValueActionCreatePool   = "create_pool"
 	EventValueActionAddLiquidity = "add_liquidity"
