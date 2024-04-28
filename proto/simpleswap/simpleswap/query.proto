@@ -1,26 +1,44 @@
 syntax = "proto3";
+
 package simpleswap.simpleswap;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
-import "simpleswap/simpleswap/params.proto";
+import "simpleswap/simpleswap/pool_params.proto";
+import "simpleswap/simpleswap/pool_data.proto";
 
 option go_package = "simpleswap/x/simpleswap/types";
 
 // Query defines the gRPC querier service.
 service Query {
+  
   // Parameters queries the parameters of the module.
-  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/simpleswap/simpleswap/params";
+  
+  }
+  
+  // Queries a list of Pools items.
+  rpc Pools (QueryPoolsRequest) returns (QueryPoolsResponse) {
+    option (google.api.http).get = "/simpleswap/simpleswap/pools/all";
+  
   }
 }
-
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
 
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
   // params holds all the parameters of this module.
-  Params params = 1 [(gogoproto.nullable) = false];
 }
+
+message QueryPoolsRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination            = 1;
+}
+
+message QueryPoolsResponse {
+  repeated PoolData pools = 1 [(gogoproto.nullable) = false];
+  cosmos.base.query.v1beta1.PageResponse pagination            = 2;
+}
+

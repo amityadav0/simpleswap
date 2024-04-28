@@ -25,16 +25,21 @@ ignite chain serve
     - simpleswapd  tx simpleswap create-pool "1000eth,1000weth" "6,6" 100 --from alice
     - Note: Can only be done by owner (cosmos14tpfntxwkv30d6re3hrk8ny72r50vpalkapy2k)
 
-### Add liquidity
+#### Add liquidity
     - simpleswapd  tx simpleswap add-liquidity poole546c64ea2770e4bf76808611963b12673ed7af8d2a1194ce584ae9a5c987255 "1000eth,1000weth" --from alice
     - Note: pool_id can be queried using simpleswapd query or a event is emitted with pool id when a new pool is created.
     - By default pool id for weth and eth will be `poole546c64ea2770e4bf76808611963b12673ed7af8d2a1194ce584ae9a5c987255`
 
-## Swap
+#### Swap
     - simpleswapd tx simpleswap swap poole546c64ea2770e4bf76808611963b12673ed7af8d2a1194ce584ae9a5c987255 100weth 1eth --from alice
 
-## Withdraw
+#### Withdraw
     - simpleswapd tx simpleswap withdraw cosmos14tpfntxwkv30d6re3hrk8ny72r50vpalkapy2k poole546c64ea2770e4bf76808611963b12673ed7af8d2a1194ce584ae9a5c987255 200poole546c64ea2770e4bf76808611963b12673ed7af8d2a1194ce584ae9a5c987255 --from alice
+
+### Query
+
+- `simpleswapd query simpleswap pools all 10`
+- This will return pool data
 
 ### Web Frontend
 
