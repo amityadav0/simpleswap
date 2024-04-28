@@ -22,7 +22,7 @@ func CmdWithdraw() *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			argReceiver := args[0]
 			argPoolId := args[1]
-			argShare, err := sdk.ParseCoinNormalized(args[1])
+			argShare, err := sdk.ParseCoinNormalized(args[2])
 			if err != nil {
 				return err
 			}
