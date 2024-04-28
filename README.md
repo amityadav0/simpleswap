@@ -11,6 +11,8 @@ params
 
 ## Get started
 - ignite version: `v0.27.1`
+- `sudo curl https://get.ignite.com/cli@v0.27.1 | sudo bash`
+- `sudo mv ignite /usr/local/bin/`
 ```
 ignite chain serve
 ```
@@ -23,7 +25,7 @@ ignite chain serve
 
 #### Create Pool (whitlelist)
     - simpleswapd  tx simpleswap create-pool "1000eth,1000weth" "6,6" 100 --from alice
-    - Note: Can only be done by owner (cosmos14tpfntxwkv30d6re3hrk8ny72r50vpalkapy2k)
+    - Note: Can only be done by owner, removed for testing(anyone can create pool)
 
 #### Add liquidity
     - simpleswapd  tx simpleswap add-liquidity poole546c64ea2770e4bf76808611963b12673ed7af8d2a1194ce584ae9a5c987255 "1000eth,1000weth" --from alice
